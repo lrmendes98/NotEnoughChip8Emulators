@@ -1,4 +1,2 @@
 *.o
 chip8
-docs/html
-docs/Doxyfile
