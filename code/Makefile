@@ -24,6 +24,7 @@ $(PROJ_NAME): $(OBJS_FILES)
 
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp
+	@mkdir -p objFiles
 	$(CXX) $(CXXFLAGS) -I$(INC_DIR) $< -o $@
 
 test:
