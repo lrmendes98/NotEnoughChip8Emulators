@@ -1,7 +1,3 @@
-# Doxygen:
-[doxygen](html/index.html)
-
-
 # Links:
 
 https://github.com/mattmikolay/chip-8/wiki
