@@ -1,9 +1,11 @@
-#include "app.hpp"
+#include "view.h"
+
 
 int main(int agrc, char* argv[])
 {
-    App testApp;
-    testApp.init();
-    testApp.run();
+    View myView;
+    myView.init();
+    myView.run();
+
     return 0;
 }

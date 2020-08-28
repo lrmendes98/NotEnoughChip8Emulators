@@ -10,7 +10,7 @@ PROJ_NAME = chip8
 OBJS_DIR := objFiles
 SRCS_DIR := src
 INC_DIR := include
-SRCS_FILES := $(SRCS_DIR)/main.cpp $(SRCS_DIR)/app.cpp 
+SRCS_FILES := $(SRCS_DIR)/main.cpp $(SRCS_DIR)/view.cpp $(SRCS_DIR)/chip8.cpp 
 
 OBJS_FILES = $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o, $(SRCS_FILES))
 

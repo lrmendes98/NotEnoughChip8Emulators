@@ -1,28 +1,19 @@
-#include "app.hpp"
+#include "view.h"
 
 #include <SDL2/SDL.h>
 #include <iostream>
 
-/**
- * A brief history of JavaDoc-style (C-style) comments.
- *
- * This is the typical JavaDoc-style C-style comment. It starts with two
- * asterisks.
- *
- * @param theory Even if there is only one possible unified theory. it is just a
- *               set of rules and equations.
- */
 
-App::App() {
+View::View() {
 }
 
-App::~App() {
+View::~View() {
     SDL_DestroyRenderer(this->renderer);
     SDL_DestroyWindow(this->window);
     SDL_Quit();
 }
 
-void App::init() {
+void View::init() {
     // Init video resources
     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) != 0) {
         std::cerr << "Error: " << SDL_GetError() << std::endl;
@@ -33,7 +24,7 @@ void App::init() {
     this->window = SDL_CreateWindow("Chip8-emu", 
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        400, 600,
+        WINDOW_HEIGHT, WINDOW_WIDTH,
         SDL_WINDOW_RESIZABLE);
     if(this->window == nullptr) {
         std::cerr << "Error: " << SDL_GetError() << std::endl;
@@ -52,7 +43,7 @@ void App::init() {
     }
 }
 
-void App::run() {
+void View::run() {
     this->isRunning = true;
 
     SDL_Event sdlEvent;
@@ -66,7 +57,7 @@ void App::run() {
     }
 }
 
-void App::onEvent(SDL_Event *sdlEvent) {
+void View::onEvent(SDL_Event *sdlEvent) {
     switch (sdlEvent->type) {
         case SDL_KEYUP: {
             if(sdlEvent->key.keysym.sym == SDLK_ESCAPE) {
@@ -89,8 +80,19 @@ void App::onEvent(SDL_Event *sdlEvent) {
     }
 }
 
-void App::onLoop() {
+void View::onLoop() {
+
 }
 
-void App::onRender() {
+void View::onRender() {
+    for (unsigned int i = 0; i<20; ++i) {
+        for (unsigned int j=0; j<20; ++j) {
+                SDL_RenderDrawPoint(renderer, i, j);
+                SDL_RenderPresent(renderer);
+            }
+        }
 }
+
+void View::drawSomething() {
+
+} 
