@@ -1,8 +1,5 @@
 #include "view.h"
 
-#include <SDL2/SDL.h>
-#include <iostream>
-
 
 View::View() {
 }
@@ -88,26 +85,38 @@ void View::onRender() {
     SDL_SetRenderDrawColor( this->renderer, 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_RenderClear( this->renderer );
     
-    //Render red filled quad
-    SDL_Rect fillRect = { WINDOW_WIDTH / 4, WINDOW_HEIGHT / 4, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 };
-    SDL_SetRenderDrawColor( this->renderer, 0xFF, 0x00, 0x00, 0xFF );        
-    SDL_RenderFillRect( this->renderer, &fillRect );
+    // //Render red filled quad
+    // SDL_Rect fillRect = { WINDOW_WIDTH / 4, WINDOW_HEIGHT / 4, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 };
+    // SDL_SetRenderDrawColor( this->renderer, 0xFF, 0x00, 0x00, 0xFF );        
+    // SDL_RenderFillRect( this->renderer, &fillRect );
 
-    //Render green outlined quad
-    SDL_Rect outlineRect = { WINDOW_WIDTH / 6, WINDOW_HEIGHT / 6, WINDOW_WIDTH * 2 / 3, WINDOW_HEIGHT * 2 / 3 };
-    SDL_SetRenderDrawColor( this->renderer, 0x00, 0xFF, 0x00, 0xFF );
-    SDL_RenderDrawRect( this->renderer, &outlineRect );
+    // //Render green outlined quad
+    // SDL_Rect outlineRect = { WINDOW_WIDTH / 6, WINDOW_HEIGHT / 6, WINDOW_WIDTH * 2 / 3, WINDOW_HEIGHT * 2 / 3 };
+    // SDL_SetRenderDrawColor( this->renderer, 0x00, 0xFF, 0x00, 0xFF );
+    // SDL_RenderDrawRect( this->renderer, &outlineRect );
 
-    //Draw vertical line of yellow dots
-    SDL_SetRenderDrawColor( this->renderer, 0xFF, 0xFF, 0x00, 0xFF );
-    for( int i = 0; i < WINDOW_HEIGHT; i += 4 ) {
-        SDL_RenderDrawPoint( this->renderer, WINDOW_WIDTH / 2, i );
-    }
+    // //Draw vertical line of yellow dots
+    // SDL_SetRenderDrawColor( this->renderer, 0xFF, 0xFF, 0x00, 0xFF );
+    // for( int i = 0; i < WINDOW_HEIGHT; i += 4 ) {
+    //     SDL_RenderDrawPoint( this->renderer, WINDOW_WIDTH / 2, i );
+    // }
+
+    Coord pos = {20, 20};
+    Color red = {0xFF, 0x00, 0x00, 0x00};
+    Rectangle rectangle1 = Rectangle(pos, red, 100, 50);
+
+    drawFilledRectangle(this->renderer, rectangle1);
 
     //Update screen
-    SDL_RenderPresent( this->renderer );
+    SDL_RenderPresent(this->renderer);
 }
 
-void View::drawSomething() {
+void View::drawFilledRectangle(SDL_Renderer* renderer, Rectangle rect) {
+    SDL_Rect sdlRect = { rect.getPosition().x, rect.getPosition().y, 
+        rect.getWidth(), rect.getHeight() };
 
+    SDL_SetRenderDrawColor(this->renderer, rect.getColor().r, rect.getColor().g, 
+        rect.getColor().b, rect.getColor().a);
+
+    SDL_RenderFillRect(this->renderer, &sdlRect);
 } 

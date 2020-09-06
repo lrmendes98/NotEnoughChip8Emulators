@@ -3,14 +3,16 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
+#include "rectangle.h"
+
 /**
  * 
  * View class corresponding to the MVC structure
  *
  */
-
  #define WINDOW_WIDTH 600
- #define WINDOW_HEIGHT 400
+ #define WINDOW_HEIGHT 600
+ 
 
 class View {
     public:
@@ -34,5 +36,9 @@ class View {
         void onEvent(SDL_Event *event);
         void onLoop();
         void onRender();
-        void drawSomething();
+        
+        /**
+        * Draws color filled rectangles
+        */
+        void drawFilledRectangle(SDL_Renderer* renderer, Rectangle rect);
 };
