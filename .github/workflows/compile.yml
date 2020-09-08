@@ -19,7 +19,7 @@ jobs:
 
    - name: setup compilation
      run: |
-      sudo apt install libsdl2-dev libsdl2-2.0-0 -y
+      sudo apt install libsdl2-2.0-0 libsdl2-dev -y
       cd code
 
    - name: run compilation
