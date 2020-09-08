@@ -13,30 +13,33 @@
  
 
 class View {
-    public:
-        View();
-        ~View();
-
-        /**
-        * Inits SDL, window and renderer
-        */
-        void init();
-
-        /**
-        * Contains view loop, render and events
-        */
-        void run();
-
+    
     private:
         SDL_Window *window;
         SDL_Renderer *renderer;
-        bool isRunning;
+        bool drawFlag;
         void onEvent(SDL_Event *event);
         void onLoop();
-        void onRender();
-        
+        void onRender();        
         /**
         * Draws color filled rectangles
         */
         void drawFilledRectangle(SDL_Renderer* renderer, Rectangle rect);
+
+    public:
+        View();
+        ~View();
+        void setDrawFlag(bool value);
+        bool getDrawFlag();
+        /**
+        * Inits SDL, window and renderer
+        */
+        void init();
+        /**
+        * Contains view loop, render and events
+        */
+        void run();
+        void drawFrame();
+        
+
 };

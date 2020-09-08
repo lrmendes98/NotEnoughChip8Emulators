@@ -40,12 +40,20 @@ void View::init() {
     }
 }
 
+void View::setDrawFlag(bool value) {
+    this->drawFlag = value;
+}
+
+bool View::getDrawFlag() {
+    return this->drawFlag;
+}
+
 void View::run() {
-    this->isRunning = true;
+    this->drawFlag = true;
 
     SDL_Event sdlEvent;
 
-    while(this->isRunning) {
+    while(this->drawFlag) {
         while(SDL_PollEvent(&sdlEvent)) {
             onEvent(&sdlEvent);
         }
@@ -59,7 +67,9 @@ void View::onEvent(SDL_Event *sdlEvent) {
         case SDL_KEYUP: {
             if(sdlEvent->key.keysym.sym == SDLK_ESCAPE) {
                 std::cout << "Quit signal was issued\n";
-                this->isRunning = false;
+                this->drawFlag = false;
+                this->setDrawFlag(false);
+
             } else {
                 std::cout << "Key: "
                     << (char) sdlEvent->key.keysym.sym
@@ -69,7 +79,8 @@ void View::onEvent(SDL_Event *sdlEvent) {
         break;
         case SDL_QUIT: {
             std::cout << "Quit signal was issued\n";
-            this->isRunning = false;
+            this->drawFlag = false;
+            this->setDrawFlag(false);
         }
         break;
     default:
@@ -109,6 +120,16 @@ void View::onRender() {
 
     //Update screen
     SDL_RenderPresent(this->renderer);
+}
+
+void View::drawFrame() {
+    SDL_Event sdlEvent;
+
+    while(SDL_PollEvent(&sdlEvent))
+        onEvent(&sdlEvent);
+    
+    onLoop();
+    onRender();
 }
 
 void View::drawFilledRectangle(SDL_Renderer* renderer, Rectangle rect) {
