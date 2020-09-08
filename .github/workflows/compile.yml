@@ -18,8 +18,7 @@ jobs:
    - uses: actions/checkout@v1
 
    - name: setup compilation
-     run: apt install libsdl2.0
-     run: cd code
+     run: apt install libsdl2.0 && cd code
 
    - name: run compilation
      run: make
