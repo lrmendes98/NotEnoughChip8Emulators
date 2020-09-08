@@ -8,5 +8,6 @@ jobs:
 	runs-on: ubuntu-latest
 	steps:
 		- run: |
+			apt install libsdl2.0
 			make
 			
