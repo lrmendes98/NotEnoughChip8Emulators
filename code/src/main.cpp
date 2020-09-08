@@ -1,7 +1,7 @@
 #include "view.h"
 
 
-int main(int agrc, char* argv[])
+int main(int argc, char* argv[])
 {
     View myView;
     myView.init();

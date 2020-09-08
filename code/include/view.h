@@ -6,9 +6,7 @@
 #include "rectangle.h"
 
 /**
- * 
  * View class corresponding to the MVC structure
- *
  */
  #define WINDOW_WIDTH 600
  #define WINDOW_HEIGHT 600
