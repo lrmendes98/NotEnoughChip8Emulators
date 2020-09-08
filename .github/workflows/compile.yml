@@ -12,7 +12,6 @@ jobs:
   steps:
    - uses: actions/checkout@v1
 
-   - uses:
-    - run: apt install libsdl2.0
-    - run: cd code
-    - run: make
+   - run: apt install libsdl2.0
+     run: cd code
+     run: make
