@@ -2,7 +2,7 @@
 
 
 int main(int argc, char* argv[])
-
+{
     View myView;
     myView.init();
     myView.run();
