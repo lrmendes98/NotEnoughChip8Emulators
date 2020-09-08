@@ -1,13 +1,9 @@
 name: Test Compilation
 
-on:
-	[push]
+on: [push]
 
 jobs:
-	name: Run make
+	name: Run-make
 	runs-on: ubuntu-latest
 	steps:
-		- run: |
-			apt install libsdl2.0
-			make
-			
+		- run: apt install libsdl2.0 && cd code && make
