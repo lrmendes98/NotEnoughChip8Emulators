@@ -17,11 +17,13 @@ jobs:
 
    - uses: actions/checkout@v1
 
-   - name: setup compilation
-     run: |
-      sudo apt update
-      sudo apt install libsdl2-2.0-0 libsdl2-dev -y
-      cd code
+   - name: update system
+     run: sudo apt update
 
-   - name: run compilation
-     run: make
+   - name: install dependencies
+     run: sudo apt install libsdl2-2.0-0 libsdl2-dev -y
+
+   - name: run make 
+     run: |
+      cd code
+      make
