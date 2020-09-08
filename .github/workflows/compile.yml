@@ -1,0 +1,12 @@
+name: Test Compilation
+
+on:
+	[push]
+
+jobs:
+	name: Run make
+	runs-on: ubuntu-latest
+	steps:
+		- run: |
+			make
+			
