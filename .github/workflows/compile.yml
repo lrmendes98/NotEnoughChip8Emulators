@@ -6,12 +6,20 @@ on:
    - master
 
 jobs:
+
  make:
+
   name: Run-make
+
   runs-on: ubuntu-latest
+
   steps:
+
    - uses: actions/checkout@v1
 
-   - run: apt install libsdl2.0
+   - name: setup compilation
+     run: apt install libsdl2.0
      run: cd code
+
+   - name: run compilation
      run: make
